@@ -44,8 +44,6 @@ clean:
 
 # Install the library to LIBPATH
 install: 
-	cp librf24.so.1.0 ${LIBDIR}/${LIBNAME}
-	ln -sf ${LIBDIR}/${LIBNAME} ${LIBDIR}/librf24.so.1
-	ln -sf ${LIBDIR}/${LIBNAME} ${LIBDIR}/librf24.so
+	cp ${LIBNAME} ${LIBDIR}/
 	ldconfig
 
