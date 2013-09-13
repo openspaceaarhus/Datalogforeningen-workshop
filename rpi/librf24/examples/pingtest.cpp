@@ -24,7 +24,7 @@
 // Hardware configuration
 //
 
-RF24 radio("/dev/spidev0.0", 8000000, 18, 8);	//spi device, speed CE and CSN pin
+RF24 radio("/dev/spidev0.0", 8000000, 25, 8);	//spi device, speed CE and CSN pin
 
 //
 // Topology
