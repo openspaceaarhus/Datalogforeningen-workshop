@@ -83,6 +83,7 @@ void setup(void)
 	// Start listening
 	//
 
+	radio.enableDynamicPayloads();
 	radio.startListening();
 
 	//
