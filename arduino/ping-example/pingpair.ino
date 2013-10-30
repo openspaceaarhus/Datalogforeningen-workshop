@@ -81,7 +81,6 @@ void setup(void)
 
   Serial.begin(57600);
   printf_begin();
-  printf("Hest\n\r");
   printf("\n\rRF24/examples/pingpair/\n\r");
   printf("ROLE: %s\n\r",role_friendly_name[role]);
 
@@ -94,10 +93,6 @@ void setup(void)
   // optionally, increase the delay between retries & # of retries
   // radio.setRetries(15,15);
 
-  // optionally, reduce the payload size.  seems to
-  // improve reliability
-  //radio.setPayloadSize(4);
-  radio.setAutoAck(true);
   radio.setPALevel(RF24_PA_MAX);
   radio.setChannel(0x4c);
 
@@ -114,11 +109,13 @@ void setup(void)
   {
     radio.openWritingPipe(pipes[0]);
     radio.openReadingPipe(1,pipes[1]);
+    radio.setAutoAck( false ) ;
   }
   else
   {
     radio.openWritingPipe(pipes[1]);
     radio.openReadingPipe(1,pipes[0]);
+    radio.setAutoAck( true ) ;
   }
 
   //
@@ -129,10 +126,10 @@ void setup(void)
   // } else {
   //   printf( "Data rate 250KBPS set FAILED!!\n\r" ) ;
   // }
-  // radio.setDataRate( RF24_2MBPS ) ;
-  // radio.setPALevel( RF24_PA_MAX ) ;
+
+
   radio.enableDynamicPayloads() ;
-  radio.setAutoAck( true ) ;
+
   radio.powerUp() ;
   radio.startListening();
 

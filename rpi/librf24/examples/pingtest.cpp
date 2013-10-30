@@ -74,9 +74,11 @@ void setup(void)
 	if (role == role_ping_out) {
 		radio.openWritingPipe(pipes[0]);
 		radio.openReadingPipe(1, pipes[1]);
+		radio.setAutoAck(false);
 	} else {
 		radio.openWritingPipe(pipes[1]);
 		radio.openReadingPipe(1, pipes[0]);
+		radio.setAutoAck(true) ;
 	}
 
 	//
@@ -163,7 +165,7 @@ void loop(void)
 
 				// Delay just a little bit to let the other unit
 				// make the transition to receiver
-				delay(20);
+				delay(5);
 			}
 
 			// First, stop listening so we can talk
